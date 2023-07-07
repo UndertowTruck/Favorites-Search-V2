@@ -1,0 +1,101 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  		<link rel="stylesheet" href="styles.css">
+		<script src="awesomplete.min.js" type="text/javascript" defer></script>
+		<script src="api.js" type="text/javascript" defer></script>
+		<script src="tag-logic.js" type="text/javascript" defer></script>
+		<script src="misc.js" type="text/javascript" defer></script>
+		<script src="loading.js" type="text/javascript" defer></script>
+		<script src="ui.js" type="text/javascript" defer></script>
+		<title>Rule34 Favorites Search</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com/" crossorigin="true">
+		<link rel="preconnect" href="https://fonts.gstatic.com/">
+	</head>
+	<body id="body">
+		<div id="ui">
+			<form autocomplete="on" action="javascript:void(0);">
+				<input type="text" id="userId" placeholder="User Id" autocomplete="on">
+				<div class="awesomplete"><input id="tags" name="tags" size="30" type="text" value="" autocomplete="off" aria-autocomplete="list"><ul hidden=""></ul><span class="visually-hidden" role="status" aria-live="assertive" aria-relevant="additions"></span></div>
+				<input type="submit" id= "submit">
+				<a href="tutorial.html" target="_blank">About</a>
+			</form>
+			<input type="checkbox" id="advancedMode">
+			<label for="advancedMode" style="white-space:pre-wrap;">Advanced Mode (loads API data for images, allowing you to sort and filter them)</label>
+			<br>
+			<input type="checkbox" id="disableUI">
+			<label for="disableUI">Minimize UI</label>
+			<br>
+			<p id="interpretation"> Command interpretation will display here </p>
+			<!-- Event listener for button in ui.js-->
+			<div style="display:inline">
+				<button type="button" id="stop" style="display: none">Stop</button>
+			</div>
+			<div style="display: inline;">
+				<a id="random" href="javascript:void(0)" onmousedown="changeRandom()" style="display: none" target="_blank">Random</a>
+			</div>
+			<div id="subUI">
+				<div id="flexElementContainer">
+					<div class="subUIelement" id="failedRequestContainer">
+						<h3 style="text-align: center">Failed Requests</h3>
+						<nav id = "failedRequestNav">
+							<ul id="failedRequestList">
+
+							</ul>
+						</nav>
+					</div>
+					<fieldset id="settings" class="subUIelement" style="display: none;">
+						<h3 style="text-align: center">Advanced Mode</h3>
+						<br>
+						<div>
+							<input type="checkbox" id="explicit" checked>
+							<label for="explicit">Explicit</label>
+							<input type="checkbox" id="questionable" checked>
+							<label for="questionable">Questionable</label>
+							<input type="checkbox" id="safe" checked>
+							<label for="safe">Safe</label>
+						</div>
+						<br>
+						<div>
+							<label for="sortOptions">Sort By</label>
+							<select id="sortOptions">
+								<option value="none">None</option>
+								<option value="score">Score</option>
+								<option value="id">Post ID</option>
+								<option value="height">Height</option>
+								<option value="width">Width</option>
+								<option value="lastUpdate">Last Update Date</option>
+							</select>
+							<label for="sortDescendingOption">Descending</label>
+							<input type="checkbox" id="sortDescendingOption" checked>
+						</div>
+						<br>
+						<div>
+							<label for="statDisplayed">Statistic Displayed</label>
+							<select id="statDisplayed">
+								<option value="score">Score</option>
+								<option value="id">Post ID</option>
+								<option value="rating">Rating</option>
+								<option value="height">Height</option>
+								<option value="width">Width</option>
+								<option value="date">Upload Date</option>
+								<option value="lastUpdate">Last Update Date</option>
+								<option value="deleted">Deleted</option>
+								<option value="none">None</option>
+							</select>
+
+						</div>
+						<br>
+					</fieldset>
+				</div>
+			</div>
+			<div title="Higher number = faster search; more computer resources" style="display: none;">Max threads:
+				<input id="maxThreads" name="comment" size="5" type="text" value="40">
+			</div>	
+		</div>
+		<div id="content"></div>
+		<br>
+		<img id="spinner" src="spinner.gif" alt="Spinner" style="display: none;">
+	</body>
+</html>
